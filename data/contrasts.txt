@@ -1,0 +1,4 @@
+condition_A	condition_B
+Fb	Mb
+Fb	Neg
+Mb	Neg

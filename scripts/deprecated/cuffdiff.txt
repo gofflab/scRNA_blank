@@ -1,0 +1,2 @@
+cuffdiff -p 16 -C /home-2/gcannon4@jhu.edu/work/seq/gcannon/TH_123370/data/contrasts.txt -o /home-2/gcannon4@jhu.edu/work/seq/gcannon/TH_123370/analysis/unit_test --use-sample-sheet $REF_GTF /home-2/gcannon4@jhu.edu/work/seq/gcannon/TH_123370/data/quant_files.txt
+
