@@ -60,3 +60,21 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+#Sequencing files
+.gz
+.fastq
+.fq
+.bam
+.sam
+.bai
+.cxb
+.fpkm_tracking
+.diff
+.tgz
+.count_table
+.info
+.attr_table
+.tabl
+.gtf
+
