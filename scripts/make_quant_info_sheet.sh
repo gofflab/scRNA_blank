@@ -7,7 +7,6 @@ echo "sample_id group_label"
 
 for dir in $ALIGN_ROOT/*;
   do
-  	CELLID=`basename $dir`
- 		f="$CELLID.bam"
-    echo "$PROJECT_ROOT/data/quants/$CELLID/abundances.cxb      $CELLID"
+  CELLID=`basename $dir`
+  echo $PROJECT_ROOT/data/quants/$CELLID/abundances.cxb      $CELLID
   done;
