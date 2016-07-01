@@ -2,6 +2,8 @@
 
 source scRNA_config.sh
 
+exec > $PROJECT_ROOT/data/bam_files.txt
+
 printf "bamfile\tsample_id\tquantified\n"
 
 CELLID="NULL"

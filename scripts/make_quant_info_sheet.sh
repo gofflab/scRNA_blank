@@ -2,6 +2,8 @@
 
 source scRNA_config.sh
 
+exec > $PROJECT_ROOT/data/quant_files.txt
+
 printf "quantfile\tsample_id\n"
 
 CELLID="NULL"
