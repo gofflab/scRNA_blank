@@ -4,18 +4,18 @@
 #############
 
 # Directory structure
-export PROJECT_NAME=MyProject
-export PROJECT_ROOT=..  #Please adjust this accordingly. WILL NOT WORK UNLESS SPECIFIED!
+export PROJECT_NAME=Chakravarti_HD
+export PROJECT_ROOT=$HOME/work/seq/shared/Chakravarti_HD  #Please adjust this accordingly. WILL NOT WORK UNLESS SPECIFIED!
 export DIFF_ROOT=$PROJECT_ROOT/analysis
-export READS_ROOT=$PROJECT_ROOT/data/fastq
+export READS_ROOT=$PROJECT_ROOT/data/fastqs
 export ALIGN_ROOT=$PROJECT_ROOT/data/bam
 export QUANT_ROOT=$PROJECT_ROOT/data/quants
 export NORM_ROOT=$PROJECT_ROOT/data/norms
-export SCRATCH_ROOT=/scratch/users/lgoff2@jhu.edu/scRNA_projects/$PROJECT_NAME
+export SCRATCH_ROOT=/scratch/groups/lgoff2/seq/shared/$PROJECT_NAME
 export LOG_BASE=$PROJECT_ROOT/logs
 
 # Project-specific annotation
-export REF_GTF=/work/assemblies/mouse/gencode/M8/filtered/gencode.vM8.transcripts.filtered.gtf
+export REF_GTF=$HOME/work/assemblies/mouse/gencode/M8/filtered/gencode.vM8.transcripts.filtered.gtf
 export HISAT_INDEX=$HOME/work/indexes/mouse/mm10/hisat/mm10_hisat
 
 # Data sheets

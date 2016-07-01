@@ -1,13 +1,18 @@
 #!/bin/bash
 
-PROJECT_ROOT="$HOME/work/seq/shared/Chakravarti_HD_02"
-ALIGN_ROOT="$PROJECT_ROOT/data/bam"
+source scRNA_config.sh
 
-echo "bamfile sample_id quantified"
+printf "bamfile\tsample_id\tquantified\n"
 
-for dir in $ALIGN_ROOT/*;
-  do
-    CELLID=`basename $dir`
-    f="$CELLID.bam"
-    echo $PROJECT_ROOT/data/quants/$CELLID/$f      $CELLID "FALSE"
-  done;
+CELLID="NULL"
+
+sed 1d $PROJECT_ROOT/data/fastq_files.txt | while read line
+	do
+		if [[ "$CELLID" == "$(echo "$line" | awk '{print $5}')" ]]
+			then
+				continue
+		fi
+		CELLID=$(echo "$line" | awk '{print $5}')
+		f="$CELLID.bam"
+		printf "~/work/seq/shared/$PROJECT_NAME/data/bam/$CELLID/$f\t$CELLID\tFALSE\n"
+	done

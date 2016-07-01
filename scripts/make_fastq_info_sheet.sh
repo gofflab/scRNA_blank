@@ -1,11 +1,10 @@
 #!/bin/bash
 
-PROJECT_ROOT="~/work/seq/shared/Chakravarti_HD"
-FASTQ_ROOT="$HOME/work/seq/shared/Chakravarti_HD/data/fastqs"
+source scRNA_config.sh
 
-echo "fastq_file	fastq_short_name	seq_round	flowcell	cell_id	plate	well	lane	read	aligned"
+printf "fastq_file\tfastq_short_name\tseq_round\tflowcell\tcell_id\tplate\twell\tlane\tread\taligned\n"
 
-for FASTQ_FILE in $FASTQ_ROOT/*.fastq.gz;
+for FASTQ_FILE in $READS_ROOT/*.fastq.gz;
 	do
 		FILE_NAME=`basename $FASTQ_FILE`
 		FASTQ_SHORT_NAME=`basename $FASTQ_FILE .fastq.gz`
@@ -16,5 +15,5 @@ for FASTQ_FILE in $FASTQ_ROOT/*.fastq.gz;
 		WELL=${CELL_ID:8:3}
 		LANE=$(sed "s/.*\(L.*\)_R.*/\1/" <<< "$FASTQ_SHORT_NAME")
 		READ=$(sed "s/.*\(R.*\)_.*/\1/" <<< "$FASTQ_SHORT_NAME")
-		echo "~/work/seq/shared/Chakravarti_HD/data/fastqs/$FILE_NAME"	$FASTQ_SHORT_NAME	$SEQ_ROUND	$FLOWCELL	$CELL_ID	$PLATE	$WELL	$LANE	$READ	"FALSE"
+		printf "~/work/seq/shared/Chakravarti_HD/data/fastqs/$FILE_NAME\t$FASTQ_SHORT_NAME\t$SEQ_ROUND\t$FLOWCELL\t$CELL_ID\t$PLATE\t$WELL\t$LANE\t$READ\tFALSE\n"
 	done
