@@ -1,12 +1,13 @@
 #!/bin/bash
 
+source scRNA_config.sh
+
 function sam2sortedBam {
   CELLID=`basename $1 .sam`
-  DIR=`dirname $1`
-  samtools view -bS $1 >$DIR/$CELLID.unsorted.bam
-  samtools sort $DIR/$CELLID.unsorted.bam $DIR/$CELLID
-  rm $DIR/$CELLID.unsorted.bam
-  samtools index $DIR/$CELLID.bam
+  samtools view -bS $1 >$ALIGN_ROOT/$CELLID/$CELLID.unsorted.bam
+  samtools sort $ALIGN_ROOT/$CELLID/$CELLID.unsorted.bam $ALIGN_ROOT/$CELLID/$CELLID
+  rm $ALIGN_ROOT/$CELLID/$CELLID.unsorted.bam
+  samtools index $ALIGN_ROOT/$CELLID/$CELLID.bam
 };
 
 sam2sortedBam $1
