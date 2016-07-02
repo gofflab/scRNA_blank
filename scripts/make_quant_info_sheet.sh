@@ -8,12 +8,22 @@ printf "quantfile\tsample_id\n"
 
 CELLID="NULL"
 
+read sample_id <<< $( awk -F'\t' '
+{
+        for(i=1;i<=NF;i++) {
+                if($i == "sample_id")
+                        printf i
+        }
+        exit 0
+}
+' $PROJECT_ROOT/data/bam_files.txt )
+
 sed 1d $PROJECT_ROOT/data/fastq_files.txt | while read line
         do
-                if [[ "$CELLID" == "$(echo "$line" | awk '{print $5}')" ]]
+                if [[ "$CELLID" == "$(echo "$line" | cut -f$sample_id)" ]]
                         then
                                 continue
                 fi
-                CELLID=$(echo "$line" | awk '{print $5}')
+                CELLID=$(echo "$line" | cut -f$sample_id)
                 printf "~/work/seq/shared/$PROJECT_NAME/data/quants/$CELLID/abundances.cxb\t$CELLID\n"
         done

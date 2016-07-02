@@ -11,7 +11,7 @@ for dir in $ALIGN_ROOT/*;
 		if [ -d "$dir" ]
 		then
 			CELLID=`basename $dir`
-			mkdir -p $LOG_BASE/sam2bam/$CELLID\n
-			sbatch -o $LOG_BASE/sam2bam/$CELLID.out -e $LOG_BASE/sam2bam/$CELLID.err -J $CELLID -t $RUN_TIME --mem=$MAX_MEM -n $NUM_THREADS -p $QUEUE --wrap="$PROJECT_ROOT/scripts/2b-sam2sortedBam $dir/$CELLID.sam\n"
+			mkdir -p $LOG_BASE/sam2bam/$CELLID
+			sbatch -o $LOG_BASE/sam2bam/$CELLID/$CELLID.out -e $LOG_BASE/sam2bam/$CELLID/$CELLID.err -J $CELLID -t $RUN_TIME --mem=$MAX_MEM -n $NUM_THREADS -p $QUEUE --wrap="$PROJECT_ROOT/scripts/2b-sam2sortedBam.sh $ALIGN_ROOT/$CELLID/$CELLID.sam"
 		fi
 	done;

@@ -4,7 +4,7 @@ source scRNA_config.sh
 
 exec > $PROJECT_ROOT/data/fastq_files.txt
 
-printf "fastq_file\tfastq_short_name\tseq_round\tflowcell\tcell_id\tplate\twell\tlane\tread\taligned\n"
+printf "fastq_file\tfastq_short_name\tseq_round\tflowcell\tsample_id\tplate\twell\tlane\tread\taligned\n"
 
 for FASTQ_FILE in $READS_ROOT/*.fastq.gz;
 	do

@@ -1,4 +1,4 @@
-fastq_file	fastq_short_name	seq_round	flowcell	cell_id	plate	well	lane	read	aligned
+fastq_file	fastq_short_name	seq_round	flowcell	sample_id	plate	well	lane	read	aligned
 ~/work/seq/shared/Chakravarti_HD/data/fastqs/HD01_02_A01_S1_L001_R1_001.fastq.gz	HD01_02_A01_S1_L001_R1_001	HD01	1	HD01_02_A01	02	A01	L001	R1	FALSE
 ~/work/seq/shared/Chakravarti_HD/data/fastqs/HD01_02_A01_S1_L001_R2_001.fastq.gz	HD01_02_A01_S1_L001_R2_001	HD01	1	HD01_02_A01	02	A01	L001	R2	FALSE
 ~/work/seq/shared/Chakravarti_HD/data/fastqs/HD01_02_A01_S1_L002_R1_001.fastq.gz	HD01_02_A01_S1_L002_R1_001	HD01	1	HD01_02_A01	02	A01	L002	R1	FALSE
