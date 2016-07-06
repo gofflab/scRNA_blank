@@ -16,7 +16,7 @@ read sample_id <<< $( awk -F'\t' '
         }
         exit 0
 }
-' $PROJECT_ROOT/data/bam_files.txt )
+' $PROJECT_ROOT/data/fastq_files.txt )
 
 sed 1d $PROJECT_ROOT/data/fastq_files.txt | while read line
         do
@@ -25,5 +25,5 @@ sed 1d $PROJECT_ROOT/data/fastq_files.txt | while read line
                                 continue
                 fi
                 CELLID=$(echo "$line" | cut -f$sample_id)
-                printf "~/work/seq/shared/$PROJECT_NAME/data/quants/$CELLID/abundances.cxb\t$CELLID\n"
+                printf "/scratch/groups/lgoff2/seq/shared/$PROJECT_NAME/data/quants/$CELLID/abundances.cxb\t$CELLID\n"
         done
