@@ -25,5 +25,5 @@ sed 1d $PROJECT_ROOT/data/fastq_files.txt | while read line
                                 continue
                 fi
                 CELLID=$(echo "$line" | cut -f$sample_id)
-                printf "/scratch/groups/lgoff2/seq/shared/$PROJECT_NAME/data/quants/$CELLID/abundances.cxb\t$CELLID\n"
+                printf "$PROJECT_ROOT/data/quants/$CELLID/abundances.cxb\t$CELLID\n"
         done
