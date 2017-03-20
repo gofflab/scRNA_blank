@@ -8,8 +8,7 @@ QUEUE=lrgmem #unrestricted #or general OR serial_requeue
 NUM_TASKS=1
 NUM_THREADS=8
 MAX_MEM=500G
-RUN_TIME=10000
-
+RUN_TIME=360
 OUTDIR="$PROJECT_ROOT/data/norms"
 mkdir -p $OUTDIR
 mkdir -p $LOG_BASE/norms
