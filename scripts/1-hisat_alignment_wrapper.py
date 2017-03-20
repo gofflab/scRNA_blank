@@ -83,18 +83,17 @@ samples = {}
 for line in sampleInfoHandle:
 	vals = line.strip().split("\t")
 	lineDict = dict(zip(headerVals,vals))
-	print "%s" % lineDict['cell_id']
+	#print "%s" % lineDict['cell_id']
 	samples[lineDict['cell_id']] = {'fastq_name':lineDict['fastq_short_name'],
 									'flowcell':lineDict['flowcell'],
 									'cell_id':lineDict['cell_id'],
-									'aligned':lineDict['aligned'],
-									'plate':lineDict['plate'],
+									'index':lineDict['index'],
+									'aligned':lineDict['aligned']
 									}
 
 
-
 #tophat_cmd = """sbatch -J %s -t %d --mem-per-cpu=%d -n %d -p %s --mail-type=FAIL --wrap="tophat --no-coverage-search --tmp-dir %s %s --max-multihits 10 -p %d -o %s %s %s %s >%s/%s.out 2>%s/%s.err" >%s/%s_align_slurm.out 2>%s/%s_align_slurm.err"""
-hisat_cmd = """sbatch -o %s/%s_align_slurm.out -e %s/%s_align_slurm.err -J %s -t %d --mem-per-cpu=%d -n %d -p %s --mail-type=FAIL --wrap="hisat -p %d -x %s -1 %s -2 %s -S %s/%s.sam >%s/%s_hisat.out 2>%s/%s_hisat.err" """
+hisat_cmd = """sbatch -o %s/%s_align_slurm.out -e %s/%s_align_slurm.err -J %s -t %d --mem-per-cpu=%d -n %d -p %s --mail-type=FAIL --wrap="hisat2 -p %d -x %s -1 %s -2 %s -S %s/%s.sam >%s/%s_hisat.out 2>%s/%s_hisat.err" """
 
 outHandle = open("alignScript_hisat.sh",'w')
 
@@ -103,18 +102,21 @@ sampleKeys = samples.keys()
 sampleKeys.sort()
 
 for k in sampleKeys:
+	print k
 	if not samples[k]['aligned'] == 'TRUE':
 		SAMPLE_NAME=samples[k]['cell_id']
 		SCRATCHDIR=SCRATCH_ROOT+"/"+SAMPLE_NAME
 		OUTDIR=ALIGN_ROOT+"/"+SAMPLE_NAME
 		LOGDIR=LOGBASE+"/hisat/"+SAMPLE_NAME
-		READ1 = READS_ROOT+"/"+samples[k]['fastq_name']+"_R1_001.fastq.gz"
-		READ2 = READS_ROOT+"/"+samples[k]['fastq_name']+"_R2_001.fastq.gz"
-		print >>outHandle, "\n#%s" % k
-		dirString = "mkdir -p %s"
-		print >>outHandle, "\n".join(dirString % x for x in [SCRATCHDIR,OUTDIR,LOGDIR])
-		print >>outHandle, "echo '%s'" % k
-		print >>outHandle, hisat_cmd % (
+		#READ1 = READS_ROOT+"/"+samples[k]['fastq_name']+"_1.fastq.gz"
+		#READ2 = READS_ROOT+"/"+samples[k]['fastq_name']+"_2.fastq.gz"
+		READ1=",".join([READS_ROOT+"/FASTQ/"+samples[k]['flowcell']+"_"+x+"_"+samples[k]['index']+"_1.fastq.gz" for x in ["1","2"]])
+        READ2=",".join([READS_ROOT+"/FASTQ/"+samples[k]['flowcell']+"_"+x+"_"+samples[k]['index']+"_2.fastq.gz" for x in ["1","2"]])
+        print >>outHandle, "\n#%s" % k
+        dirString = "mkdir -p %s"
+        print >>outHandle, "\n".join(dirString % x for x in [SCRATCHDIR,OUTDIR,LOGDIR])
+        print >>outHandle, "echo '%s'" % k
+        print >>outHandle, hisat_cmd % (
 							LOGDIR,
 							SAMPLE_NAME,
 							LOGDIR,

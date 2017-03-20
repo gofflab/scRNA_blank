@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source scRNA_config.sh
+source scRNA.config
 
 exec > $PROJECT_ROOT/data/bam_files.txt
 
@@ -10,11 +10,11 @@ CELLID="NULL"
 
 sed 1d $PROJECT_ROOT/data/fastq_files.txt | while read line
 	do
-		if [[ "$CELLID" == "$(echo "$line" | awk '{print $5}')" ]]
+		if [[ "$CELLID" == "$(echo "$line" | awk '{print $7}')" ]]
 			then
 				continue
 		fi
-		CELLID=$(echo "$line" | awk '{print $5}')
+		CELLID=$(echo "$line" | awk '{print $7}')
 		f="$CELLID.bam"
-		printf "~/work/seq/shared/$PROJECT_NAME/data/bam/$CELLID/$f\t$CELLID\tFALSE\n"
+		printf "$PROJECT_ROOT/data/bam/$CELLID/$f\t$CELLID\tFALSE\n"
 	done
