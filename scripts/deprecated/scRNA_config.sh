@@ -4,8 +4,8 @@
 #############
 
 # Directory structure
-export PROJECT_NAME=Mueller_Phase1_cortex
-export PROJECT_ROOT=$HOME/work/seq/lgoff/GilSanz/Phase1 #Please adjust this accordingly. WILL NOT WORK UNLESS SPECIFIED!
+export PROJECT_NAME=Chakravarti_HD
+export PROJECT_ROOT=$HOME/work/seq/shared/Chakravarti_HD  #Please adjust this accordingly. WILL NOT WORK UNLESS SPECIFIED!
 export DIFF_ROOT=$PROJECT_ROOT/analysis
 export READS_ROOT=$PROJECT_ROOT/data/fastqs
 export ALIGN_ROOT=$PROJECT_ROOT/data/bam
@@ -15,9 +15,8 @@ export SCRATCH_ROOT=/scratch/groups/lgoff2/seq/shared/$PROJECT_NAME
 export LOG_BASE=$PROJECT_ROOT/logs
 
 # Project-specific annotation
-export REF_GTF=$PROJECT_ROOT/annotations/Mueller_cortex_ref.gtf
-#export HISAT_INDEX=$HOME/work/indexes/mouse/mm10/hisat2/mm10_hisat2_ercc
-export HISAT_INDEX=$PROJECT_ROOT/annotations/Mueller_cortex_hisat
+export REF_GTF=$HOME/work/assemblies/mouse/gencode/M8/filtered/gencode.vM8.transcripts.filtered.gtf
+export HISAT_INDEX=$HOME/work/indexes/mouse/mm10/hisat/mm10_hisat
 
 # Data sheets
 export FASTQ_SHEET=$PROJECT_ROOT/data/fastq_files.txt

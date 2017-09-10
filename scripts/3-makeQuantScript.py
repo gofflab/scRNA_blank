@@ -47,7 +47,7 @@ samples = {}
 #Samples
 for line in bam_file_handle:
 	line = dict(zip(headerVals,line.rstrip().split("\t")))
-	samples[line['sample_name']]={
+	samples[line['sample_id']]={
 			'bamfile':line['bamfile'],
 			'quantified':line['quantified']
 			}

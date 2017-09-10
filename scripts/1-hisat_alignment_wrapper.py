@@ -77,7 +77,6 @@ sampleInfoFile=opts["FASTQ_SHEET"]
 sampleInfoHandle = open(sampleInfoFile,'r')
 
 headerVals = sampleInfoHandle.readline().strip().split("\t")
-
 samples = {}
 
 for line in sampleInfoHandle:
@@ -110,8 +109,8 @@ for k in sampleKeys:
 		LOGDIR=LOGBASE+"/hisat/"+SAMPLE_NAME
 		#READ1 = READS_ROOT+"/"+samples[k]['fastq_name']+"_1.fastq.gz"
 		#READ2 = READS_ROOT+"/"+samples[k]['fastq_name']+"_2.fastq.gz"
-		READ1=",".join([READS_ROOT+"/FASTQ/"+samples[k]['flowcell']+"_"+x+"_"+samples[k]['index']+"_1.fastq.gz" for x in ["1","2"]])
-        READ2=",".join([READS_ROOT+"/FASTQ/"+samples[k]['flowcell']+"_"+x+"_"+samples[k]['index']+"_2.fastq.gz" for x in ["1","2"]])
+		READ1=",".join([READS_ROOT+"/GS_01_rerun/FASTQ/"+samples[k]['flowcell']+"_"+x+"_"+samples[k]['index']+"_1.fastq.gz" for x in ["1","2"]])
+        READ2=",".join([READS_ROOT+"/GS_01_rerun/FASTQ/"+samples[k]['flowcell']+"_"+x+"_"+samples[k]['index']+"_2.fastq.gz" for x in ["1","2"]])
         print >>outHandle, "\n#%s" % k
         dirString = "mkdir -p %s"
         print >>outHandle, "\n".join(dirString % x for x in [SCRATCHDIR,OUTDIR,LOGDIR])
